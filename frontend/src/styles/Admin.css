@@ -1,0 +1,22 @@
+.admin-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.admin-container table {
+    width: 50%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.admin-container th,
+.admin-container td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
