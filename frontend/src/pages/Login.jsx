@@ -17,7 +17,7 @@ function ParticipantForm() {
         event.preventDefault();
         console.log("Submitting:", { username, password });
         try {
-            const response = await fetch("https://new-quizz-rbe1zaia6-santhosh0801s-projects.vercel.app/api/participant", {
+            const response = await fetch("https://new-quizz-app-production.up.railway.app/api/participant", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password })
