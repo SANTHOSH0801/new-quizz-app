@@ -23,6 +23,12 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 // 🔹 Debug: Print allowed frontend URL
 console.log("✅ Allowed Frontend URL:", FRONTEND_URL);
 
+app.use((req, res, next) => {
+    console.log(`🛠️ Incoming request: ${req.method} ${req.url}`);
+    console.log(`Headers: `, req.headers);
+    next();
+});
+
 // 🔹 CORS Configuration
 app.use(cors({
     origin: FRONTEND_URL,
