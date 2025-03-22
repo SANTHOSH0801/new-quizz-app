@@ -24,7 +24,7 @@ console.log("Allowed Frontend URL:", process.env.FRONTEND_URL);
 
 
 app.use(cors({ 
-    origin: "https://new-quiz-942m21vab-santhosh0801s-projects.vercel.app/login",
+    origin: "https://new-quizz-rbe1zaia6-santhosh0801s-projects.vercel.app/api/participant",
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true
