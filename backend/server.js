@@ -9,41 +9,51 @@ const dotenv = require("dotenv");
 const adminRoutes = require("./routes/adminRoutes");
 const participantRoutes = require("./routes/participantRoutes");
 const scoreRoutes = require("./routes/scoreRoutes");
-const connection = require("./dbConnection");
-const { createUsersTable } = require("./dbserver");
 const leaderboardRouter = require("./routes/leaderboardRouter"); // Update path as needed
 
+const connection = require("./dbConnection");
+const { createUsersTable } = require("./dbserver");
+
+// Load environment variables
 dotenv.config();
 const app = express();
 const PORT = 8080;
+
+// 🔹 Debug: Print the frontend URL
 console.log("Allowed Frontend URL:", process.env.FRONTEND_URL);
+
 // 🔹 CORS Configuration
 app.use(cors({
-    origin: process.env.FRONTEND_URL,  // Allow frontend to access the API
+    origin: process.env.FRONTEND_URL || "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true  // Allow cookies if needed
 }));
 
+// 🔹 Handle CORS Preflight Requests
+app.options("*", (req, res) => {
+    res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL || "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.sendStatus(200); // Respond to preflight request
+});
 
 // 🔹 Security & Performance Enhancements
-app.use(helmet());         // Adds security headers
-app.use(compression());    // Compresses responses
-app.use(morgan("dev"));    // Logs API requests
+app.use(helmet());         // Security headers
+app.use(compression());    // Compress responses
+app.use(morgan("dev"));    // Log API requests
 
 // 🔹 Middleware
-app.use(bodyParser.json());  // To parse JSON request bodies
+app.use(bodyParser.json());  // Parse JSON request bodies
 
-// 🔹 Routes for leaderboard
-// This will route all leaderboard related requests
-
-// 🔹 Other Routes
+// 🔹 API Routes
 app.use("/api", adminRoutes);           // Admin routes
 app.use("/api", participantRoutes);     // Participant routes
 app.use("/api/scores", scoreRoutes);    // Score routes
-app.use("/api", leaderboardRouter);
+app.use("/api", leaderboardRouter);     // Leaderboard routes
 
-
-// Database connection and server startup
+// 🔹 Database Connection and Server Start
 (async () => {
     try {
         const conn = await connection.getConnection(); // ✅ Correct way for mysql2/promise
@@ -61,8 +71,7 @@ app.use("/api", leaderboardRouter);
     }
 })();
 
-
-// 🔹 404 Error Handling (This handles unknown routes)
+// 🔹 404 Error Handling (Handles unknown routes)
 app.use((req, res, next) => {
     res.status(404).json({ error: "Route not found" });
 });
