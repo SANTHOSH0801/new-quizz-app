@@ -24,13 +24,13 @@ console.log("Allowed Frontend URL:", process.env.FRONTEND_URL);
 
 
 app.use(cors({ 
-    origin: "*",
+    origin: "https://new-quiz-942m21vab-santhosh0801s-projects.vercel.app/login",
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true
 }));
 
-// app.options("*", cors()); // Enable preflight requests
+app.options("*", cors()); // Enable preflight requests
 
 // 🔹 Handle CORS Preflight Requests
 app.options("*", (req, res) => {
