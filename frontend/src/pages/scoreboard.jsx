@@ -9,7 +9,7 @@ const Scoreboard = () => {
     useEffect(() => {
         const fetchScores = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/leaderboard");
+                const response = await axios.get("http://new-quizz-rbe1zaia6-santhosh0801s-projects.vercel.app/api/leaderboard");
 
                 if (!response.data || !response.data.data) {
                     throw new Error("Invalid response from server.");
