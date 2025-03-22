@@ -15,7 +15,7 @@ const leaderboardRouter = require("./routes/leaderboardRouter"); // Update path 
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 8080;
 console.log("Allowed Frontend URL:", process.env.FRONTEND_URL);
 // 🔹 CORS Configuration
 app.use(cors({
