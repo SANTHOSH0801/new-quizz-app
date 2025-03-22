@@ -23,23 +23,21 @@ const PORT = 8080;
 console.log("Allowed Frontend URL:", process.env.FRONTEND_URL);
 
 
-app.use(cors({ 
-    origin: "https://new-quizz-rbe1zaia6-santhosh0801s-projects.vercel.app/api/participant",
-    methods: "GET,POST,PUT,DELETE,OPTIONS",
-    allowedHeaders: "Content-Type,Authorization",
+app.use(cors({
+    origin: "https://new-quiz-942m21vab-santhosh0801s-projects.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }));
 
-app.options("*", cors()); // Enable preflight requests
-
-// 🔹 Handle CORS Preflight Requests
 app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*"); // Allow all origins (or specify your frontend)
+    res.header("Access-Control-Allow-Origin", "https://new-quiz-942m21vab-santhosh0801s-projects.vercel.app");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     res.header("Access-Control-Allow-Credentials", "true");
     res.sendStatus(200);
 });
+
 
 // 🔹 Security & Performance Enhancements
 app.use(helmet());         // Security headers
