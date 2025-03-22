@@ -85,7 +85,7 @@ const Home = () => {
 
   const sendScoreToBackend = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/scores", {
+      const response = await fetch("http://new-quizz-rbe1zaia6-santhosh0801s-projects.vercel.app/api/scores", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
