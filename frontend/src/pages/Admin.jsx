@@ -15,7 +15,7 @@ const Admin = () => {
 
         try {
             console.log("Attempting login...");
-            const response = await axios.post("http://new-quizz-rbe1zaia6-santhosh0801s-projects.vercel.app/api/admin/login", {
+            const response = await axios.post("https://new-quizz-rbe1zaia6-santhosh0801s-projects.vercel.app/api/admin/login", {
                 username,
                 password
             });
