@@ -18,12 +18,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 console.log("Allowed Frontend URL:", process.env.FRONTEND_URL);
 
-// 🔹 CORS Configuration
-app.use(cors({
-    origin: process.env.FRONTEND_URL,  // Allow frontend to access the API
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
+const cors = require("cors");
+app.use(cors({ origin: "https://your-frontend.vercel.app", methods: ["GET", "POST", "OPTIONS"] }));
+
 
 // 🔹 Security & Performance Enhancements
 app.use(helmet());         // Adds security headers
