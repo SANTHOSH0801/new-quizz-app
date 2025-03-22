@@ -12,7 +12,7 @@ const Admin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(""); // Clear previous error
-
+        console.log("Entered the handlesubmit");
         try {
             console.log("Attempting login...");
             const response = await axios.post("https://new-quizz-app-production.up.railway.app/api/admin/login", {
