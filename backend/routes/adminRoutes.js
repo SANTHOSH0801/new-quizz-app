@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../dbConnection"); // Ensure this path is correct
 
-router.post("/admin/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     console.log("Entered /admin/login route");
     
     const { username, password } = req.body;
