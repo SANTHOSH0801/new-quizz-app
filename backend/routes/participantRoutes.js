@@ -17,17 +17,6 @@ participantRouter.post("/newparticipant", (req, res) => {
     return res.status(200).json({data:"response successfull"});
 });
 
-// Get all participants
-participantRouter.get("/participants", (req, res) => {
-    return res.status(200).json({data:"response successfull"});
-    Participant.getAll((err, results) => {
-        if (err) {
-            console.error("Error fetching participants:", err);
-            return res.status(500).json({ error: "Database error" });
-        }
-        res.json(results);
-    });
-});
 
 // ✅ Correct export with unique name
 module.exports = participantRouter;

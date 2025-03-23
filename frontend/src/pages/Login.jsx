@@ -17,7 +17,7 @@ function ParticipantForm() {
         event.preventDefault();
         console.log("Submitting:", { username, password });
         try {
-            const response = await fetch("https://new-quizz-app-production.up.railway.app/api/participant", {
+            const response = await fetch("https://new-quizz-app-production.up.railway.app/api/participant/newparticipant", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password })
