@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: "https://new-quiz-mj75bj4ar-santhosh0801s-projects.vercel.app/",
+    origin:FRONTEND_URL,
     credentials: true, // Required for authentication
     methods: "GET, POST, PUT, DELETE, OPTIONS",
   })
