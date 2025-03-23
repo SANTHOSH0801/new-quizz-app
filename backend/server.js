@@ -30,12 +30,16 @@ app.use((req, res, next) => {
 });
 
 // 🔹 CORS Configuration
-app.use(cors({
-    origin: "*", // Change this to FRONTEND_URL in production
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}));
+
+app.use(
+  cors({
+    origin: "https://new-quiz-e92yhr9b1-santhosh0801s-projects.vercel.app",
+    credentials: true, // Required for authentication
+    methods: "GET, POST, PUT, DELETE, OPTIONS",
+  })
+);
+app.options("*", cors()); // Handle preflight requests
+
 
 
 // 🔹 Preflight Requests Handling
