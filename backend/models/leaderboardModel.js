@@ -19,6 +19,7 @@ const getLeaderboard = async () => {
                 total_score = VALUES(total_score), 
                 quizzes_attempted = VALUES(quizzes_attempted);
         `;
+        console.log("updated the leaderboard");
 
         await pool.execute(updateQuery);
         console.log("✅ Leaderboard updated successfully.");
