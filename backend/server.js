@@ -63,7 +63,7 @@ app.use(bodyParser.json());
 app.use("/api/admin", adminRoutes);
 app.use("/api/participant", participantRoutes);
 app.use("/api/scores", scoreRoutes);
-app.use("/api/leaderboard", leaderboardRouter);
+app.use("/api", leaderboardRouter);
 
 // 🔹 404 Error Handling (Handles Unknown Routes)
 app.use((req, res, next) => {
