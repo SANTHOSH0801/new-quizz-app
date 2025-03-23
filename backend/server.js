@@ -31,11 +31,12 @@ app.use((req, res, next) => {
 
 // 🔹 CORS Configuration
 app.use(cors({
-    origin: FRONTEND_URL,
+    origin: "*", // Change this to FRONTEND_URL in production
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }));
+
 
 // 🔹 Preflight Requests Handling
 app.options("*", (req, res) => {
