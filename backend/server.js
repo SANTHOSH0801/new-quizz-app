@@ -18,7 +18,7 @@ const { createUsersTable } = require("./dbserver");
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 // 🔹 Debug: Print allowed frontend URL
 console.log("✅ Allowed Frontend URL:", FRONTEND_URL);
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: "https://new-quiz-e92yhr9b1-santhosh0801s-projects.vercel.app",
+    origin: "https://new-quiz-mj75bj4ar-santhosh0801s-projects.vercel.app/",
     credentials: true, // Required for authentication
     methods: "GET, POST, PUT, DELETE, OPTIONS",
   })
