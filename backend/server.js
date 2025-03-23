@@ -61,7 +61,7 @@ app.use(bodyParser.json());
 
 // 🔹 Register API Routes
 app.use("/api/admin", adminRoutes);
-app.use("/api/participant", participantRoutes);
+app.use("/api", participantRoutes);
 app.use("/api/scores", scoreRoutes);
 app.use("/api", leaderboardRouter);
 
