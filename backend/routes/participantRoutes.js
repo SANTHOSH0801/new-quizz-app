@@ -19,6 +19,7 @@ participantRouter.post("/participant", (req, res) => {
 
 // Get all participants
 participantRouter.get("/participants", (req, res) => {
+    return res.status(200).json({data:"response successfull"});
     Participant.getAll((err, results) => {
         if (err) {
             console.error("Error fetching participants:", err);
